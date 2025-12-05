@@ -247,6 +247,8 @@ export const alternarTema = (esOscuro) => {
   );
   const btn = document.getElementById("toggle-tema");
   if (btn) {
-    btn.textContent = esOscuro ? "☀️" : "🌙";
+    // En tema oscuro mostramos el sol (para cambiar a claro)
+    // En tema claro mostramos la luna (para cambiar a oscuro)
+    btn.innerHTML = esOscuro ? "☀️" : "🌙";
   }
 };
