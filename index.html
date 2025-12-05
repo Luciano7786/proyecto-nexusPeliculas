@@ -1,109 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nexus</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.json">
-</head>
-<body>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
     <header>
-        <div class="logo" id="logo-app">NEXUS</div>
-        
-        <div id="contenedor-barra-busqueda" class="search-bar-container">
-            <input type="text" id="input-busqueda" placeholder="Buscar película...">
-            <button id="btn-cerrar-busqueda" class="close-search-btn">&times;</button>
-        </div>
+      <div class="logo" id="logo-app">NEXUS</div>
 
-        <div class="actions">
-            <button id="toggle-busqueda" class="icon-btn" title="Buscar">🔍</button>
-            <button id="btn-favoritos" class="icon-btn" title="Favoritos">❤️</button>
-            <button id="btn-pendientes" class="icon-btn" title="Pendientes">🕒</button>
-            <button id="toggle-tema" class="icon-btn">🌙 / ☀️</button>
-            <button id="btn-acerca-de" class="icon-btn">ℹ️</button>
-        </div>
+      <div id="contenedor-barra-busqueda" class="search-bar-container">
+        <input
+          type="text"
+          id="input-busqueda"
+          placeholder="Buscar película..."
+        />
+        <button id="btn-cerrar-busqueda" class="close-search-btn">
+          &times;
+        </button>
+      </div>
+
+      <div class="actions">
+        <button id="toggle-busqueda" class="icon-btn" title="Buscar">🔍</button>
+        <button id="btn-favoritos" class="icon-btn" title="Favoritos">
+          ❤️
+        </button>
+        <button id="btn-pendientes" class="icon-btn" title="Pendientes">
+          🕒
+        </button>
+        <button id="toggle-tema" class="icon-btn">🌙</button>
+        <button id="btn-acerca-de" class="icon-btn">ℹ️</button>
+      </div>
     </header>
 
     <main>
-        <div id="encabezado-favoritos" class="favorites-header" style="display: none;">
-            <h2>Mis Favoritos</h2>
-            <button id="btn-volver-inicio" class="back-btn">← Volver al Inicio</button>
+      <div
+        id="encabezado-favoritos"
+        class="favorites-header"
+        style="display: none"
+      >
+        <h2>Mis Favoritos</h2>
+        <button id="btn-volver-inicio" class="back-btn">
+          ← Volver al Inicio
+        </button>
+      </div>
+
+      <div
+        id="encabezado-pendientes"
+        class="favorites-header"
+        style="display: none"
+      >
+        <h2>Mi Lista de Pendientes</h2>
+        <button id="btn-volver-inicio-pendientes" class="back-btn">
+          ← Volver al Inicio
+        </button>
+      </div>
+
+      <div id="contenedor-filtros" class="filters-container">
+        <div class="category-buttons">
+          <button class="btn-categoria active" data-category="popular">
+            🔥 Populares
+          </button>
+          <button class="btn-categoria" data-category="top_rated">
+            ⭐ Mejor Valoradas
+          </button>
+          <button class="btn-categoria" data-category="upcoming">
+            📅 Próximamente
+          </button>
+          <button class="btn-categoria" data-category="now_playing">
+            🎬 En Cartelera
+          </button>
         </div>
 
-        <div id="encabezado-pendientes" class="favorites-header" style="display: none;">
-            <h2>Mi Lista de Pendientes</h2>
-            <button id="btn-volver-inicio-pendientes" class="back-btn">← Volver al Inicio</button>
+        <div class="genre-wrapper">
+          <button id="scroll-izquierda" class="scroll-btn">‹</button>
+          <div id="contenedor-generos" class="genre-container">
+            <!-- Genre tags will be rendered here -->
+          </div>
+          <button id="scroll-derecha" class="scroll-btn">›</button>
         </div>
 
-        <div id="contenedor-filtros" class="filters-container">
-            <div class="category-buttons">
-                <button class="btn-categoria active" data-category="popular">🔥 Populares</button>
-                <button class="btn-categoria" data-category="top_rated">⭐ Mejor Valoradas</button>
-                <button class="btn-categoria" data-category="upcoming">📅 Próximamente</button>
-                <button class="btn-categoria" data-category="now_playing">🎬 En Cartelera</button>
-            </div>
-
-            <div class="genre-wrapper">
-                <button id="scroll-izquierda" class="scroll-btn">‹</button>
-                <div id="contenedor-generos" class="genre-container">
-                    <!-- Genre tags will be rendered here -->
-                </div>
-                <button id="scroll-derecha" class="scroll-btn">›</button>
-            </div>
-            
-            <div class="advanced-filters">
-                <select id="filtro-anio" class="filter-select">
-                    <option value="">Año</option>
-                    <!-- Years will be populated via JS or static -->
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="old">Clásicos</option>
-                </select>
-                <select id="filtro-calificacion" class="filter-select">
-                    <option value="">Calificación</option>
-                    <option value="8">8+ ★</option>
-                    <option value="7">7+ ★</option>
-                    <option value="6">6+ ★</option>
-                </select>
-            </div>
+        <div class="advanced-filters">
+          <select id="filtro-anio" class="filter-select">
+            <option value="">Año</option>
+            <!-- Years will be populated via JS or static -->
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="old">Clásicos</option>
+          </select>
+          <select id="filtro-calificacion" class="filter-select">
+            <option value="">Calificación</option>
+            <option value="8">8+ ★</option>
+            <option value="7">7+ ★</option>
+            <option value="6">6+ ★</option>
+          </select>
         </div>
-        <div id="rejilla-peliculas">
-            <!-- Movies will be rendered here -->
-        </div>
+      </div>
+      <div id="rejilla-peliculas">
+        <!-- Movies will be rendered here -->
+      </div>
     </main>
 
     <div id="modal-pelicula" class="modal">
-        <div class="modal-content">
-            <span class="btn-cerrar">&times;</span>
-            <div id="cuerpo-modal">
-                <!-- Movie details will be rendered here -->
-            </div>
+      <div class="modal-content">
+        <span class="btn-cerrar">&times;</span>
+        <div id="cuerpo-modal">
+          <!-- Movie details will be rendered here -->
         </div>
+      </div>
     </div>
 
     <div id="modal-acerca-de" class="modal">
-        <div class="modal-content">
-            <span class="btn-cerrar">&times;</span>
-            <div class="about-content">
-                <h2>Acerca de Nexus</h2>
-                <p>Nexus es tu dashboard personal de películas, diseñado para descubrir, buscar y guardar tus filmes favoritos.</p>
-                <p>Desarrollado con ❤️ usando Vanilla JS y la API de TMDB por Luciano Cirvini.</p>
-                <p>Versión 1.0.0</p>
-                <p><a href="https://lucianojoaquincirvini.web.app" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">Visita mi Portfolio</a></p>
-                <div class="tech-stack">
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>JavaScript</span>
-                    <span>PWA</span>
-                </div>
-            </div>
+      <div class="modal-content">
+        <span class="btn-cerrar">&times;</span>
+        <div class="about-content">
+          <h2>Acerca de Nexus</h2>
+          <p>
+            Nexus es tu dashboard personal de películas, diseñado para
+            descubrir, buscar y guardar tus filmes favoritos.
+          </p>
+          <p>
+            Desarrollado con ❤️ usando Vanilla JS y la API de TMDB por Luciano
+            Cirvini.
+          </p>
+          <p>Versión 1.0.0</p>
+          <p>
+            <a
+              href="https://lucianojoaquincirvini.web.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="
+                color: var(--accent-color);
+                text-decoration: none;
+                font-weight: bold;
+              "
+              >Visita mi Portfolio</a
+            >
+          </p>
+          <div class="tech-stack">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>PWA</span>
+          </div>
         </div>
+      </div>
     </div>
 
     <button id="btn-volver-arriba" title="Volver arriba">↑</button>
@@ -111,5 +159,5 @@
     <div id="contenedor-notificaciones" class="toast-container"></div>
 
     <script type="module" src="js/main.js"></script>
-</body>
+  </body>
 </html>
